@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\augro\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\augro\\.nuget\\packages"
+    ]
+  }
+}
