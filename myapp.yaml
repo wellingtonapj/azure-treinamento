@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comunidadecloud-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comunidadecloud-pod
+  template:
+    metadata:
+      labels:
+        app: comunidadecloud-pod
+    spec:
+      containers:
+      - name: comunidadecloud-container
+        image: cloudtreinamentos.azurecr.io/comunidadecloud:latest
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
+        ports:
+        - containerPort: 80
+          name: application
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comunidadecloud-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 80
+  selector:
+    app: comunidadecloud-pod
